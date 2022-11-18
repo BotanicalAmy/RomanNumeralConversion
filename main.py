@@ -1,21 +1,17 @@
 class Solution:
 
-    def __init__(self):
-        self.numeral = []
-        self.s = ''
-        self.roman_numeral_values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
-
     def romanToInt(self, s: str) -> int:
         self.s = s
-        self.numeral = list(self.s)
-        self.numeral = [self.roman_numeral_values[k] for k in self.numeral if k in self.roman_numeral_values]
+        numeral = list(self.s)
+        numeral = [roman_numeral_values[k] for k in numeral if k in roman_numeral_values]
         # need to subtract values when the leading numeral value is less than the one that follows, bc Greeks
-        for number in range(len(self.numeral) - 1):
-            if self.numeral[number] < self.numeral[number + 1]:
-                self.numeral[number] = -abs(self.numeral[number])
-        return sum(self.numeral)
+        for number in range(len(numeral) - 1):
+            if numeral[number] < numeral[number + 1]:
+                numeral[number] = -abs(numeral[number])
+        return sum(numeral)
 
 
+roman_numeral_values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
 # name my solution class
 roman_solve = Solution()
 
