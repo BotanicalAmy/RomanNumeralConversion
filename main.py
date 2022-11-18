@@ -1,4 +1,3 @@
-
 class Solution:
 
     def __init__(self):
@@ -10,14 +9,12 @@ class Solution:
         self.s = s
         self.numeral = list(self.s)
         self.numeral = [self.roman_numeral_values[k] for k in self.numeral if k in self.roman_numeral_values]
+        # need to subtract values when the leading numeral value is less than the one that follows, bc Greeks
+        for number in range(len(self.numeral) - 1):
+            if self.numeral[number] < self.numeral[number + 1]:
+                self.numeral[number] = -abs(self.numeral[number])
         return sum(self.numeral)
 
-# I placed before V or X indicates one less,
-# so four is IV (one less than five) and nine is IX (one less than ten)
-# X placed before L or C indicates ten less,
-# so forty is XL (ten less than fifty) and ninety is XC (ten less than a hundred)
-# C placed before D or M indicates a hundred less, so four hundred is CD (a hundred less than five hundred)
-# and nine hundred is CM (a hundred less than a thousand)
 
 # name my solution class
 roman_solve = Solution()
